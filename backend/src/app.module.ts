@@ -1,4 +1,4 @@
-
+import { PeopleModule } from './people/people.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -24,6 +24,7 @@ import { SitesModule } from './sites/sites.module';
     }),
 
     SitesModule,
+    PeopleModule,
   ],
 })
 export class AppModule {}
