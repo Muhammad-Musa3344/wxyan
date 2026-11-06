@@ -1,4 +1,5 @@
 import { PeopleModule } from './people/people.module';
+import { SearchModule } from './search/search.module';
 import { VisitsModule } from './visits/visits.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -27,6 +28,7 @@ import { SitesModule } from './sites/sites.module';
     SitesModule,
     PeopleModule,
     VisitsModule,
+    SearchModule,
   ],
 })
 export class AppModule {}
