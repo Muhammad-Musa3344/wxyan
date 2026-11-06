@@ -1,3 +1,4 @@
+
 import {
   Body,
   Controller,
@@ -8,6 +9,7 @@ import {
 
 import { VisitsService } from './visits.service';
 import { NavigateDto } from './dto/navigate.dto';
+import { UpdateStateDto } from './dto/update-state.dto';
 
 @Controller('visits')
 export class VisitsController {
@@ -24,6 +26,14 @@ export class VisitsController {
     @Body() dto: NavigateDto,
   ) {
     return this.visitsService.navigate(personId, dto);
+  }
+
+  @Post(':personId/state')
+  updateState(
+    @Param('personId') personId: string,
+    @Body() dto: UpdateStateDto,
+  ) {
+    return this.visitsService.updateState(personId, dto.state);
   }
 
   @Post(':personId/back')

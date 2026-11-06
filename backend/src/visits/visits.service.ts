@@ -121,6 +121,33 @@ export class VisitsService {
     return this.formatHistory(history);
   }
 
+  async updateState(
+    personId: string,
+    state: Record<string, unknown>,
+  ) {
+    await this.validatePerson(personId);
+
+    const history = await this.visitModel.findOne({
+      personId: new Types.ObjectId(personId),
+    });
+
+    if (
+      !history ||
+      history.currentIndex < 0 ||
+      history.currentIndex >= history.entries.length
+    ) {
+      throw new BadRequestException('No current page to update.');
+    }
+
+    history.entries[history.currentIndex].state = state;
+
+    history.markModified('entries');
+
+    await history.save();
+
+    return this.formatHistory(history);
+  }
+
   async back(personId: string) {
     await this.validatePerson(personId);
 
