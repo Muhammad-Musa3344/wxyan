@@ -1,3 +1,4 @@
+
 import { NestFactory } from '@nestjs/core';
 import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -187,8 +188,12 @@ async function seed() {
       );
     }
 
-    console.log(`Seed complete: ${authors.length} authors and ${websites.length} websites.`);
-    console.log('Broken test links: missingarchive.local and oldlibrary.local');
+    console.log(
+      `Seed complete: ${authors.length} authors and ${websites.length} websites.`,
+    );
+    console.log(
+      'Broken test links: missingarchive.local and oldlibrary.local',
+    );
   } finally {
     await app.close();
   }
